@@ -48,7 +48,7 @@ public class App {
                             String playerColor = scanner.nextLine();
                             player.setColor(playerColor);
                             break;
-                            
+
                         case 2:
 
                             break;
