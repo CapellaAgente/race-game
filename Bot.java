@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Bot {
+public class Bot extends Player {
     private Random random = new Random();
     private int countSquare = 0;
     private String[] name = new String[]{"Alice", "Bob", "Charlie", "David", "Emma", "Frank", "Grace", "Hannah", "Isaac", "Jack", 
@@ -15,11 +15,15 @@ public class Bot {
     
     private String chosenName;
     private String chosenColor;
+
+    public Bot() {
+        super("", "");
+        setName();
+        setColor();
+    }
                    
     public void setName() {
-        for (int i = 0; i < name.length; i++) {
-            chosenName = name[random.nextInt(name.length)];
-        }
+        chosenName = name[random.nextInt(name.length)];
     }
 
     public String getName() {
@@ -27,9 +31,7 @@ public class Bot {
     }
 
     public void setColor() {
-        for (int i = 0; i < color.length; i++) {
-            chosenColor = color[random.nextInt(color.length)];
-        }
+        chosenColor = color[random.nextInt(color.length)];
     }
 
     public String getColor() {

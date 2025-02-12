@@ -3,6 +3,13 @@ public class Player {
     private String color;
     private int countSquare = 0;
 
+    public Player(String name, String color) {
+        this.name = name;
+        this.color = color;
+        setName(this.name);
+        setColor(this.color);
+    }
+
     public void setName(String name) {
         this.name = name;
     }
