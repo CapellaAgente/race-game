@@ -8,7 +8,7 @@ public class Board {
     private int dice;
 
     private ArrayList<Integer> shortcuts;
-    private ArrayList<Integer> exits;
+    private int exit;
 
     public int rollDice() {
         dice = random.nextInt(1, 7);
@@ -19,8 +19,6 @@ public class Board {
         return boardSquares;
     }
     
-    private int exit;
-
     public int getExit() {
         exit = random.nextInt(5, 100);
         return exit;
@@ -33,7 +31,7 @@ public class Board {
         return shortcut;
     }
 
-    public String genShortcutsExits() {
+    public String generateShortcuts() {
         for (int i = 0; i < 5; i++) {
             int shortcutSquare = getShortcut();
             shortcuts.add(shortcutSquare);
