@@ -7,7 +7,7 @@ public class Board {
     private int boardSquares = 100;
     private int dice;
 
-    private ArrayList<Integer> shortcuts;
+    private ArrayList<Integer> shortcuts = new ArrayList<>();
     private int exit;
 
     public int rollDice() {

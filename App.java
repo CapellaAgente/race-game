@@ -6,8 +6,9 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         Game game = new Game();
         ArrayList<Player> playerList = new ArrayList<>();
-
         boolean running = true;
+        System.out.println("Carregando...");
+        Thread.sleep(3000);
         while (running) {
             System.out.println("======= CORRIDA E ATALHOS =======");
             System.out.println("""
@@ -16,7 +17,7 @@ public class App {
                     """);
             
             int userInput = scanner.nextInt();
-
+            Thread.sleep(1500);
             switch (userInput) {
                 case 1:
                     System.out.println("MODO DE JOGO =============");
@@ -27,32 +28,33 @@ public class App {
                             """);
                     
                     int userMenuInput = scanner.nextInt();
-
+                    Thread.sleep(1500);
                     switch (userMenuInput) {
                         case 1:
                             System.out.print("Digite quantos bots estarão na partida (máximo 4): ");
-                            System.out.println();
                             int countBots = scanner.nextInt();
                             for (int i = 0; i < countBots; i++) {
                                 Bot bot = new Bot();
                                 playerList.add(bot);
                             }
                             
-                            System.out.print("Informe o seu nome:");
+                            System.out.print("Informe o seu nome: ");
                             String playerName = scanner.next();
-                            System.out.print("Informe uma cor:");
+                            System.out.print("Informe uma cor: ");
                             String playerColor = scanner.next();
                             Player player = new Player(playerName, playerColor);
                             playerList.add(player);
 
                             game.startGame(playerList);
                             if (game.isRunning() == false) {
-                                System.out.println("Deseja jogar novamente? [S/N]");
-                                char playAgain = scanner.next().charAt(1);
+                                System.out.println("Deseja jogar novamente? [S/N]: ");
+                                char playAgain = scanner.next().charAt(0);
                                 if (playAgain == 'S' || playAgain == 's') {
                                     game.startGame(playerList);
+
                                 } else if (playAgain == 'N' || playAgain == 'n') {
                                     System.out.println("Voltando para o menu principal...");
+                                    Thread.sleep(2000);
                                 }
                             }
                             break;
@@ -71,6 +73,7 @@ public class App {
                 case 2:
                     System.out.println("Saindo...");
                     running = false;
+                    Thread.sleep(2000);
                     break;
 
                 default:
