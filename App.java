@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
@@ -16,10 +17,24 @@ public class App {
                     [2] Sair
                     """);
             
-            int userInput = scanner.nextInt();
-            Thread.sleep(1500);
+            int userInput = 0;
+            try {
+                userInput = scanner.nextInt();
+                if (userInput == 1 || userInput == 2) {
+                    // Valid entry, code continues from here
+                } else {
+                    System.out.println("Você digitou algo diferente de 1 ou 2. Tente novamente.");
+                    continue;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Você digitou algo diferente de 1 ou 2. Tente novamente.");
+                scanner.next();
+                continue;
+            }
+   
             switch (userInput) {
                 case 1:
+                    Thread.sleep(1500);
                     System.out.println("MODO DE JOGO =============");
                     System.out.println("""
                             [1] Sozinho (com bots)
@@ -27,7 +42,23 @@ public class App {
                             [3] Voltar
                             """);
                     
-                    int userMenuInput = scanner.nextInt();
+                    int userMenuInput = 0;
+                    boolean validEntry = false;
+                    while (!validEntry) {
+                        try {
+                            userMenuInput = scanner.nextInt();
+                            if (userMenuInput == 1 || userMenuInput == 2 || userMenuInput == 3) {
+                                validEntry = true; // Valid entry, code continues from here
+                            } else {
+                                System.out.println("Você digitou algo diferente do que 1, 2 ou 3. Tente novamente.");
+                            }
+                        } catch (InputMismatchException e) {
+                            System.out.println("Você digitou algo diferente do que 1, 2 ou 3. Tente novamente.");
+                            scanner.next();
+                        }
+                    }
+                    
+                        
                     Thread.sleep(1500);
                     switch (userMenuInput) {
                         case 1:

@@ -34,10 +34,10 @@ public class Game {
             for (int i = 0; i < this.playerList.size(); i++) {
                 currentPlayer = this.playerList.get(i);
                 System.out.println("É a sua vez, " + currentPlayer.getName() + "!");
-                Thread.sleep(1500);
+                Thread.sleep(1000);
                 int dice = board.rollDice();
                 System.out.println("Jogando o dado...");
-                Thread.sleep(1500);
+                Thread.sleep(1000);
 
                 if (dice == 6) {
                     System.out.println("Você tirou Atalho! Vá para o atalho mais próximo!");
