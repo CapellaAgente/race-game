@@ -49,6 +49,7 @@ public class App {
                             userMenuInput = scanner.nextInt();
                             if (userMenuInput == 1 || userMenuInput == 2 || userMenuInput == 3) {
                                 validEntry = true; // Valid entry, code continues from here
+
                             } else {
                                 System.out.println("Você digitou algo diferente do que 1, 2 ou 3. Tente novamente.");
                             }
@@ -63,7 +64,25 @@ public class App {
                     switch (userMenuInput) {
                         case 1:
                             System.out.print("Digite quantos bots estarão na partida (máximo 4): ");
-                            int countBots = scanner.nextInt();
+                            int countBots = 0;
+                            boolean countEntry = false;
+                            while (!countEntry) {
+                                try {
+                                    countBots = scanner.nextInt();
+                                    if (countBots < 1) {
+                                        System.out.println("2 jogadores no mínimo são necessários para iniciar a partida!");
+
+                                    } else if (countBots > 4) {
+                                        System.out.println("É permitido somente até 5 jogadores na partida!");
+                                    } else {
+                                        countEntry = true;
+                                    }
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Você digitou algo diferente do que os números entre 1 e 4. Tente novamente.");
+                                    scanner.next();
+                                }
+                            }
+
                             for (int i = 0; i < countBots; i++) {
                                 Bot bot = new Bot();
                                 playerList.add(bot);
@@ -86,6 +105,8 @@ public class App {
                                 } else if (playAgain == 'N' || playAgain == 'n') {
                                     System.out.println("Voltando para o menu principal...");
                                     Thread.sleep(2000);
+                                } else {
+                                    System.out.println("Input inválido! Tente novamente.");
                                 }
                             }
                             break;

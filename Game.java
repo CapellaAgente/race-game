@@ -45,7 +45,7 @@ public class Game {
                     board.findClosestShortcut(currentPlayer);
                     int exit = board.getExit();
                     System.out.println("O atalho te levou para a casa " + exit + "!");
-                    currentPlayer.setCountSquare(exit);
+                    currentPlayer.setCountSquare(100);
                     Thread.sleep(1500);
                 } else {
                     System.out.println("Você andou " + dice + " casa(s)!");
