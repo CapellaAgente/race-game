@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Game {
     private ArrayList<Player> playerList;
     private boolean running = true;
     private Player currentPlayer;
+    private Scanner scanner = new Scanner(System.in);
     private Board board = new Board();
 
     public boolean isRunning() {
@@ -45,7 +47,7 @@ public class Game {
                     board.findClosestShortcut(currentPlayer);
                     int exit = board.getExit();
                     System.out.println("O atalho te levou para a casa " + exit + "!");
-                    currentPlayer.setCountSquare(100);
+                    currentPlayer.setCountSquare(exit);
                     Thread.sleep(1500);
                 } else {
                     System.out.println("Você andou " + dice + " casa(s)!");
@@ -57,10 +59,34 @@ public class Game {
                     System.out.println(currentPlayer.getName() + " venceu! Parabéns!");
                     running = false;
                     break;
-                }
+                }   
             }
             currentPlayerPositions();
             Thread.sleep(2000);
+            playAgain();
+        }
+    }
+
+    public void playAgain() throws InterruptedException {
+        if (isRunning() == false) {
+            System.out.println("Deseja jogar novamente? [S/N]: ");
+            char playAgain = scanner.next().charAt(0);
+            if (playAgain == 'S' || playAgain == 's') {
+                for (int i = 0; i < this.playerList.size(); i++) {
+                    Player player = this.playerList.get(i);
+                    player.setCountSquare(0);
+                }
+                running = true;
+                startGame(this.playerList);
+
+            } else if (playAgain == 'N' || playAgain == 'n') {
+                System.out.println("Voltando para o menu principal...");
+                Thread.sleep(2000);
+
+            } else {
+                System.out.println("Input inválido! Tente novamente.");
+                playAgain();
+            }
         }
     }
 }

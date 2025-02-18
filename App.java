@@ -49,7 +49,6 @@ public class App {
                             userMenuInput = scanner.nextInt();
                             if (userMenuInput == 1 || userMenuInput == 2 || userMenuInput == 3) {
                                 validEntry = true; // Valid entry, code continues from here
-
                             } else {
                                 System.out.println("Você digitou algo diferente do que 1, 2 ou 3. Tente novamente.");
                             }
@@ -57,12 +56,11 @@ public class App {
                             System.out.println("Você digitou algo diferente do que 1, 2 ou 3. Tente novamente.");
                             scanner.next();
                         }
-                    }
+                    } 
                     
-                        
-                    Thread.sleep(1500);
                     switch (userMenuInput) {
                         case 1:
+                            Thread.sleep(1500);
                             System.out.print("Digite quantos bots estarão na partida (máximo 4): ");
                             int countBots = 0;
                             boolean countEntry = false;
@@ -71,7 +69,6 @@ public class App {
                                     countBots = scanner.nextInt();
                                     if (countBots < 1) {
                                         System.out.println("2 jogadores no mínimo são necessários para iniciar a partida!");
-
                                     } else if (countBots > 4) {
                                         System.out.println("É permitido somente até 5 jogadores na partida!");
                                     } else {
@@ -96,25 +93,45 @@ public class App {
                             playerList.add(player);
 
                             game.startGame(playerList);
-                            if (game.isRunning() == false) {
-                                System.out.println("Deseja jogar novamente? [S/N]: ");
-                                char playAgain = scanner.next().charAt(0);
-                                if (playAgain == 'S' || playAgain == 's') {
-                                    game.startGame(playerList);
-
-                                } else if (playAgain == 'N' || playAgain == 'n') {
-                                    System.out.println("Voltando para o menu principal...");
-                                    Thread.sleep(2000);
-                                } else {
-                                    System.out.println("Input inválido! Tente novamente.");
-                                }
-                            }
                             break;
 
                         case 2:
+                            Thread.sleep(1500);
+                            System.out.print("Informe a quantidade de jogadores (máximo 5): ");
+                            int countPlayers = 0;
+                            boolean playerEntry = false;
+                            while (!playerEntry) {
+                                try {
+                                    countPlayers = scanner.nextInt();
+                                    if (countPlayers < 1) {
+                                        System.out.println("2 jogadores no mínimo são necessários para iniciar a partida!");
+                                    } else if (countPlayers > 5) {
+                                        System.out.println("É permitido somente até 5 jogadores na partida!");
+                                    } else {
+                                        playerEntry = true;
+                                    }
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Você digitou algo diferente do que números entre 1 e 5. Tente novamente.");
+                                    scanner.next();
+                                }
+                            }
+
+                            for (int i = 0; i < countPlayers; i++) {
+                                System.out.println("==== JOGADOR " + i + " ====");
+                                System.out.print("Informe o seu nome: ");
+                                String localPlayerName = scanner.next(); 
+                                System.out.print("Informe a cor: ");
+                                String localColorName = scanner.next();
+                                Player newPlayer = new Player(localPlayerName, localColorName);
+                                playerList.add(newPlayer);
+                            }
+
+                            game.startGame(playerList);
                             break;
 
                         case 3:
+                            System.out.println("Voltando para o menu principal...");
+                            Thread.sleep(1500);
                             break;
 
                         default:
