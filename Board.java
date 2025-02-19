@@ -3,10 +3,8 @@ import java.util.Random;
 
 public class Board {
     private Random random = new Random();
-
     private int boardSquares = 100;
     private int dice;
-
     private ArrayList<Integer> shortcuts = new ArrayList<>();
     private int exit;
 
@@ -25,20 +23,21 @@ public class Board {
     }
 
     private int shortcut;
-
+    
     public int getShortcut() {
         shortcut = random.nextInt(5, 100);
         return shortcut;
     }
-
+    
     public String generateShortcuts() {
         for (int i = 0; i < 5; i++) {
             int shortcutSquare = getShortcut();
             shortcuts.add(shortcutSquare);
         }
+        System.out.println(shortcuts);
         return "Atalhos gerados!";
     }
-
+    
     public int findClosestShortcut(Player currentPlayer) {
         int currentSquare = currentPlayer.getCountSquare();
         int minDifference = Integer.MAX_VALUE;
@@ -53,5 +52,13 @@ public class Board {
         }
         return closestShortcut;
     }
-    
+
+    public boolean inShortcut(Player currentPlayer) {
+        for (int shortcut : shortcuts) {
+            if (currentPlayer.getCountSquare() == shortcut) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

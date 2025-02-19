@@ -36,23 +36,28 @@ public class Game {
             for (int i = 0; i < this.playerList.size(); i++) {
                 currentPlayer = this.playerList.get(i);
                 System.out.println("É a sua vez, " + currentPlayer.getName() + "!");
-                Thread.sleep(1000);
+                Thread.sleep(1200);
                 int dice = board.rollDice();
                 System.out.println("Jogando o dado...");
-                Thread.sleep(1000);
+                Thread.sleep(1200);
 
+                int exit = board.getExit();
                 if (dice == 6) {
                     System.out.println("Você tirou Atalho! Vá para o atalho mais próximo!");
-                    Thread.sleep(1000);
+                    Thread.sleep(1200);
                     board.findClosestShortcut(currentPlayer);
-                    int exit = board.getExit();
                     System.out.println("O atalho te levou para a casa " + exit + "!");
                     currentPlayer.setCountSquare(exit);
                     Thread.sleep(1500);
                 } else {
                     System.out.println("Você andou " + dice + " casa(s)!");
                     currentPlayer.setCountSquare(currentPlayer.getCountSquare() + dice);
-                    Thread.sleep(1500);
+                    if (board.inShortcut(currentPlayer) == true) {
+                        System.out.println("Você pegou um atalho!");
+                        Thread.sleep(1200);
+                        System.out.println("O atalho te levou para a casa " + exit + "!");
+                        currentPlayer.setCountSquare(exit);
+                    }
                 }
 
                 if (currentPlayer.getCountSquare() == board.getBoardSquares()) {
