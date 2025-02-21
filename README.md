@@ -14,5 +14,5 @@ Após isso, abra o terminal, acesse o diretório em que está o arquivo baixado 
 ```bash
 java -jar --enable-preview RaceGame.jar
 ```
-
+Os arquivos .java deste repositório não são necessários para o funcionamento do jogo, apenas para demonstrar o código todo para quem estiver interessado.
 E pronto! Divirta-se sozinho ou com seus amigos (altamente recomendado :D)!
