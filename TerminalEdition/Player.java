@@ -1,3 +1,5 @@
+package TerminalEdition;
+
 public class Player {
     private String name;
     private String color;
@@ -11,26 +13,26 @@ public class Player {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name; // Define o nome do jogador
     }
 
     public String getName() {
-        return name;
+        return name; // Retorna o nome do jogador
     }
 
     public void setColor(String color) {
-        this.color = color;
+        this.color = color; // Define a cor do jogador
     }
 
     public String getColor() {
-        return color;
+        return color; // Retorna a cor do jogador
     }
 
     public void setCountSquare(int countSquare) {
-        this.countSquare = countSquare;
+        this.countSquare = countSquare; // Define a posição do jogador no tabuleiro
     }
 
     public int getCountSquare() {
-        return countSquare;
+        return countSquare; // Retorna a posição do jogador no tabuleiro
     }
 }
