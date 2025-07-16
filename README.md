@@ -12,7 +12,7 @@ Primeiro, é necessário ter o [Java](https://www.java.com/pt-BR/download/) mais
 Após isso, abra o terminal, acesse o diretório em que está o arquivo baixado e execute o seguinte comando:
 
 ```bash
-java -jar --enable-preview RaceGame.jar
+java -jar RaceGame.jar
 ```
 
 E pronto! Divirta-se sozinho ou com seus amigos (altamente recomendado :D)!
